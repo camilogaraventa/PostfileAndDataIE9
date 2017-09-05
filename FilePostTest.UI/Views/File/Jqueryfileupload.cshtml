@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Jqueryfileupload";
+}
+
+<h2>Jqueryfileupload</h2>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryFileUpload")
+    <script type="text/javascript">
+
+        function isIELowerTen() {
+            var myNav = navigator.userAgent.toLowerCase();
+            return (myNav.indexOf('msie') != -1) ? ( parseInt(myNav.split('msie')[1]) < 10 ) : false;
+        }
+
+
+        $(document).ready(function () {
+            $('#image1').fileupload({
+                url: isIELowerTen() ? "http://localhost:6222/api/File/uploadie" : "http://localhost:6222/api/File/upload",
+                replaceFileInput: false,
+                autoUpload: false,
+                add: function (e, data) {
+                    $("#sendbutton").off('click').on('click', function () {
+                        data.submit();
+                    });
+                },
+                dataType: 'json',
+                submit: function (e, data) {
+                    var input = $('#caption');
+                    data.formData = { example: input.val() };
+                },
+                done: function (e, data) {
+                    alert('Correcto');
+                        console.log(data.result);
+                },
+                fail: function (e, data) {
+                    alert('Error');                   
+                    
+                }
+            });
+
+        });
+
+    </script>
+
+}
+
+<div>
+    <label for="caption">Image Caption</label>
+    <input id="caption" name="caption" type="text" />
+</div>
+<div>
+    <label for="image1">Image File</label>
+    <input id="image1" name="image1" type="file" />
+</div>
+<div>
+    <input id="sendbutton" name="sendbutton" type="button" value="Enviar" />
+</div>
+

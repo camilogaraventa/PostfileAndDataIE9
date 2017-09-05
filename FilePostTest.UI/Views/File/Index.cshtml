@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<form action="http://localhost:6222/api/File/upload" enctype="multipart/form-data" style="display:none;" method="post">*@
+    <div>
+        <label for="caption">Image Caption</label>
+        <input id="caption" name="caption" type="text" />
+    </div>
+    <div>
+        <label for="image1">Image File</label>
+        <input id="image1" name="image1" type="file" />
+    </div>
+    <div>
+        <input type="button" onclick="enviar()" value="Enviar" />
+    </div>
+@*</form>*@
+
+<script type="text/javascript">
+    function enviar() {
+        var form = $("<form method=\"POST\" action=http://localhost:6222/api/File/upload\" style=\"display:none;\" enctype=\"multipart/ form - data\"></form>");
+        form.append($("#caption"));
+        form.append($("#image1"));
+                  
+        $("body").append(form);
+        form.submit().a
+    }
+</script>

@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/FilePostTest.Services/App_Data
+/FilePostTest.Services/bin
+/FilePostTest.Services/obj/Debug
+/FilePostTest.UI/bin
+/FilePostTest.UI/obj/Debug
+/packages
